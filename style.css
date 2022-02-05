@@ -1,0 +1,234 @@
+/* Google Fonts Imports */
+@import url("https://fonts.googleapis.com/css2?family=Balsamiq+Sans&family=IBM+Plex+Sans:wght@300&family=Staatliches&display=swap");
+
+/* Variable Declaration */
+:root {
+    --light-theme: rgb(253, 253, 253);
+    --dark-theme: rgb(10,10,10);
+    --light-text-color: rgb(255,255,255);
+    --dark-text-color: rgb(0,0,0);
+    --decorate: rgb(3, 255, 192);
+    --header-font-family: "Staatliches", cursive;
+    --content-font-family: "Balsamiq Sans", cursive;
+    --paragraph-font-family: "IBM Plex Sans", sans-serif;
+}
+
+/* Universal Styling */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+/* Container for all the elements */
+.container {
+  width: 100%;
+  min-height: 100vh;
+  background: var(--light-theme);
+  color: var(--dark-text-color);
+  text-align: center;
+  display: grid;
+  grid-template-areas: "header header" "main main" "content1 content2" "footer footer";
+  gap: 50px;
+  padding: 10px 150px;
+  justify-content: center;
+  align-items: center;
+  transition: all 0.4s ease-out;
+}
+
+/* Avatar */
+#avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  padding: 2px;
+  border: 4px dashed var(--decorate);
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%); /* Vertically aligning to the center */
+  left: 40px;
+}
+
+/* Heading */
+h1 {
+  font-family: var(--header-font-family);
+  font-size: 48px;
+  text-align: center;
+  line-height: 200px;
+}
+
+/* Main Content Heading */
+h2 {
+  font-family: var(--content-font-family);
+  font-size: 32px;
+  padding: 20px;
+}
+
+/* Content 1 & Content 2 Heading */
+h3 {
+  font-family: var(--content-font-family);
+  font-size: 24px;
+  padding: 20px;
+}
+
+/* Content Paragraph */
+p {
+  font-family: var(--paragraph-font-family);
+  font-size: 18px;
+  text-align: justify;
+}
+
+/* Header Element */
+header {
+  position: relative; /* Acting as a container for #avatar */
+  grid-area: header;
+  height: 200px;
+}
+
+main {
+  grid-area: main;
+}
+
+.content1 {
+  grid-area: content1;
+}
+
+.content2 {
+  grid-area: content2;
+}
+
+/* Responsive Sample Images */
+.sample-img {
+  width: 100%;
+  height: auto;
+  margin: 10px auto;
+  box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+/* Footer */
+footer {
+  grid-area: footer;
+  margin-top: 100px;
+  align-self: flex-end; /* Vertically aligning text to the bottom */
+}
+
+footer > p {
+  font-size: 16px;
+  text-align: center;
+}
+
+span {
+  font-weight: 800;
+}
+
+/* Toggle Button */
+#toggle {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 60px;
+  height: 30px;
+  border-radius: 30px;
+  background-color: var(--dark-theme);
+  position: absolute;
+  top: 50px;
+  right: 50px;
+  transition: all 0.5s ease-in;
+  cursor: pointer;
+  z-index: 1;
+}
+
+/* Making a dot switch inside the Toggle Button */
+#toggle::before {
+  content: "";
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  background: var(--light-theme);
+  position: absolute;
+  top: 50%;
+  left: 3px;
+  transform: translateY(-50%);
+  transition: all 0.5s ease-in;
+}
+
+/* Changing toggle button background when checked */
+#toggle:checked {
+  background: var(--decorate);
+}
+
+/* Changing dot switch color and moving to the right side when checked */
+#toggle:checked::before {
+  background: var(--dark-theme);
+  left: 32px;
+}
+
+/* Changing the background & font color when checked */
+#toggle:checked ~ .container {
+  background: var(--dark-theme);
+  color: var(--light-text-color);
+}
+
+/* Media Queries */
+
+@media (max-width: 1100px) {
+  .container {
+    gap: 20px;
+    padding: 10px 50px;
+  }
+}
+
+@media (max-width: 875px) {
+  .container {
+    grid-template-areas: "header" "main" "content1" "content2" "footer";
+  }
+}
+
+@media (max-width: 750px) {
+  .container {
+    gap: 5px;
+    padding: 10px 25px;
+  }
+  h1 { font-size: 36px }
+  h2 { font-size: 26px }
+  h3 { font-size: 18px }
+  p { font-size: 16px }
+}
+
+@media (max-width: 615px) {
+  h1 { font-size: 30px }
+  h2 { font-size: 22px }
+  h3 { font-size: 16px }
+  p { font-size: 14px }
+  footer > p { font-size: 12px }
+
+  #avatar {
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+    padding: 1px;
+    border: 2px dashed var(--decorate);
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    left: 15px;
+  }
+  #toggle {
+    top: 20px;
+    right: 20px;
+  }
+}
+
+@media (max-width: 445px) {
+  .container { padding: 10px }
+  #avatar {
+    width: 50px;
+    height: 50px;
+    top: 30px;
+    left: 0;
+  }
+}
+
+@media (max-width: 250px) {
+  h1 { font-size: 22px }
+}

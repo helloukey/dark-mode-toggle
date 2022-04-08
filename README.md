@@ -29,3 +29,7 @@ If you have any feedback, please reach out to me at kunalukey32@gmail.com
 
 - [@helloukey](https://www.github.com/helloukey)
 
+## License
+
+[MIT License](LICENSE)
+
